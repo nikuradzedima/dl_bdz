@@ -1,0 +1,9 @@
+
+inference:
+  - _target_: src.metrics.STOIMetric
+    sample_rate: ${trainer.sample_rate}
+
+  - _target_: src.metrics.NISQAMetric
+    sample_rate: ${trainer.sample_rate}
+
+train: []

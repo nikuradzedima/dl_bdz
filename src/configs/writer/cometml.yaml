@@ -1,0 +1,14 @@
+
+_target_: src.logger.CometMLWriter
+
+project_name: ${oc.env:COMET_PROJECT_NAME,soundstream-codec}
+
+workspace: ${oc.env:COMET_WORKSPACE,null}
+
+run_name: soundstream_6kbps
+
+mode: online
+
+log_checkpoints: false
+
+id_length: 32

@@ -1,0 +1,16 @@
+
+defaults:
+  - model: soundstream
+  - _self_
+
+device: auto
+
+sample_rate: 16000
+
+checkpoint_path: checkpoints/model_best.pth
+
+input_path: null
+
+input_url: null
+
+output_path: outputs/reconstructed.wav
