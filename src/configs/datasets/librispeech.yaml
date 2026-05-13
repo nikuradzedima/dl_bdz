@@ -1,0 +1,29 @@
+train:
+  _target_: src.datasets.LibriSpeechCodecDataset
+
+  root: data/LibriSpeech
+
+  split: train-clean-100
+
+  sample_rate: ${trainer.sample_rate}
+
+  crop_length: 8000
+
+  training: true
+
+  max_items: null
+
+test:
+  _target_: src.datasets.LibriSpeechCodecDataset
+
+  root: data/LibriSpeech
+
+  split: test-clean
+
+  sample_rate: ${trainer.sample_rate}
+
+  crop_length: null
+
+  training: false
+
+  max_items: null

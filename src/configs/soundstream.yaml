@@ -1,0 +1,66 @@
+
+defaults:
+  - model: soundstream
+  - writer: cometml
+  - datasets: librispeech
+  - dataloader: default
+  - metrics: audio
+  - _self_
+
+trainer:
+  seed: 1
+
+  device: auto
+
+  n_epochs: 45
+
+  epoch_len: 1000
+
+  total_steps: 45000
+
+  log_step: 25
+
+  eval_step: 1000
+
+  max_eval_batches: 20
+
+  audio_log_step: 500
+
+  save_step: 5000
+
+  max_grad_norm: 10.0
+
+  save_dir: saved
+
+  resume_from: null
+
+  override: false
+
+  sample_rate: 16000
+
+  device_tensors: ["audio", "lengths"]
+
+evaluation:
+  checkpoint_path: checkpoints/model_best.pth
+
+optimizer_g:
+  _target_: torch.optim.Adam
+  lr: 2e-4
+  betas: [0.5, 0.9]
+
+optimizer_d:
+  _target_: torch.optim.Adam
+  lr: 2e-4
+  betas: [0.5, 0.9]
+
+loss:
+  _target_: src.loss.SoundStreamLoss
+  sample_rate: ${trainer.sample_rate}
+  spectral_weight: 1.0
+  adversarial_weight: 1.0
+  feature_matching_weight: 100.0
+  commitment_weight: 1.0
+
+discriminator:
+  _target_: src.model.SoundStreamDiscriminator
+  base_channels: 32
