@@ -42,8 +42,9 @@ scripts/
   download_librispeech.py
 notebooks/
   demo.ipynb
+  analysis_correct.ipynb
 reports/
-  REPORT_TEMPLATE.md
+  REPORT.md
 ```
 
 ## Установка
